@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "AirPods Max",
+    "description": "Yüksek kaliteli ses, Aktif Gürültü Engelleme ve dinamik kafa izleme özellikli uzamsal ses deneyimi.",
+    "price": 549.00,
+    "imageUrl": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500",
+    "category": "Audio"
+  },
+  {
+    "id": 2,
+    "title": "HomePod Mini",
+    "description": "Kompakt tasarımda güçlü 360 derece ses performansı ve akıllı ev asistanı.",
+    "price": 99.00,
+    "imageUrl": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=500",
+    "category": "Smart Home"
+  },
+  {
+    "id": 3,
+    "title": "MacBook Pro 14\"",
+    "description": "Profesyoneller için geliştirilen M3 Pro işlemci, Liquid Retina XDR ekran ve uzun pil ömrü.",
+    "price": 1999.00,
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500",
+    "category": "Computers"
+  },
+  {
+    "id": 4,
+    "title": "iPhone 15 Pro",
+    "description": "Havacılık sınıfı titanyum gövde, A17 Pro çip ve profesyonel seviye üçlü kamera sistemi.",
+    "price": 999.00,
+    "imageUrl": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500",
+    "category": "Smartphones"
+  }
+]
