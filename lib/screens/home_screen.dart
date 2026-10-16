@@ -2,18 +2,23 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/product.dart';
+import '../models/cart_item.dart';
 import 'product_detail_screen.dart';
 import 'cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final List<Product> cartItems;
+  final List<CartItem> cartItems;
   final Function(Product) onAddToCart;
-  final Function(Product) onRemoveFromCart;
+  final Function(CartItem) onIncrement;
+  final Function(CartItem) onDecrement;
+  final Function(CartItem) onRemoveFromCart;
 
   const HomeScreen({
     super.key,
     required this.cartItems,
     required this.onAddToCart,
+    required this.onIncrement,
+    required this.onDecrement,
     required this.onRemoveFromCart,
   });
 
@@ -33,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadProductsFromJson();
   }
 
-  // PDF Gün 4: Yerel JSON Simülasyonundan veri okuma
   Future<void> _loadProductsFromJson() async {
     try {
       final String jsonString = await rootBundle.loadString('assets/products.json');
@@ -77,8 +81,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF1E293B); // Şık Slate tonu
-    const accentColor = Color(0xFF4F46E5);  // Modern Indigo tonu
+    const primaryColor = Color(0xFF1E293B);
+    const accentColor = Color(0xFF4F46E5);
+
+    // Sepetteki toplam ürün sayısı (adetler dahil)
+    final int totalCartBadgeCount = widget.cartItems.fold(0, (sum, item) => sum + item.quantity);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
@@ -89,11 +96,11 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text(
-              'Explore Store',
+              'Discover',
               style: TextStyle(fontWeight: FontWeight.w800, fontSize: 24, color: primaryColor),
             ),
             Text(
-              'Curated electronics collection',
+              'Modern Tech & Smart Devices',
               style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w500),
             ),
           ],
@@ -122,13 +129,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(
                         builder: (context) => CartScreen(
                           cartItems: widget.cartItems,
+                          onIncrement: widget.onIncrement,
+                          onDecrement: widget.onDecrement,
                           onRemoveFromCart: widget.onRemoveFromCart,
                         ),
                       ),
                     );
                   },
                 ),
-                if (widget.cartItems.isNotEmpty)
+                if (totalCartBadgeCount > 0)
                   Positioned(
                     right: 6,
                     top: 6,
@@ -139,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: Text(
-                        '${widget.cartItems.length}',
+                        '$totalCartBadgeCount',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 10,
@@ -160,7 +169,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Arama Çubuğu
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -185,8 +193,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 18),
-
-                  // Özel Banner
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(20),
@@ -222,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                'Get 20% Off Your First Gear',
+                                'Explore Exclusive Apple Deals',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w800,
@@ -244,8 +250,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  // Kategori Filtre Butonları
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -276,8 +280,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 18),
-
-                  // GridView Ürün Kartları
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

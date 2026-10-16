@@ -1,17 +1,29 @@
-# mini_katalog_app
+# Mini Katalog Uygulaması
 
-A new Flutter project.
+Flutter temel eğitim haftası çıktısı olarak geliştirilmiş, yerel JSON veri simülasyonu ve dinamik sepet yönetimi içeren mobil katalog uygulaması.
 
-## Getting Started
+## 🛠 Kullanılan Teknolojiler & Ortam
+- **Flutter SDK:** 3.47.7 (Channel stable)
+- **Dart SDK:** Entegre Dart SDK
+- **Geliştirme Ortamı:** Visual Studio Code
+- **Emülatör:** Android Studio Pixel Emulator (API 36)
+- **Paketler:** Ekstra üçüncü taraf paket kullanılmamış, saf `material.dart` kullanılmıştır.
 
-This project is a starting point for a Flutter application.
+## 📱 Özellikler
+- **Keşfet (Discover):** Kategori filtreleme, arama çubuğu ve `GridView` tabanlı dinamik ürün kartları.
+- **Asset & JSON Yönetimi:** Ürün verileri yerel `assets/products.json` dosyasından asenkron olarak okunmaktadır.
+- **Ürün Detay Sayfası:** `Navigator` ve route parametreleri ile seçilen ürünün detaylarının aktarımı.
+- **Sepet Yönetimi (Cart):** Adet artırma/azaltma, toplam tutar hesaplama, boş sepet kontrolü ve reaktif sayaç rozeti (badge).
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Projeyi Çalıştırma
+```bash
+git clone [https://github.com/mestan4/mini_katalog_app.git](https://github.com/mestan4/mini_katalog_app.git)
+cd mini_katalog_app
+flutter pub get
+flutter run
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 📸 Uygulama Ekran Görüntüleri
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Ana Sayfa (Discover) | Ürün Detayı | Sepet (Cart) |
+| :---: | :---: | :---: |
+| <img src="screenshots/ana_görünüm.png" width="220" /> | <img src="screenshots/ürün_detay.png" width="220" /> | <img src="screenshots/sepet_görünümü.png" width="220" /> |
