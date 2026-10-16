@@ -13,11 +13,12 @@ Flutter temel eğitim haftası çıktısı olarak geliştirilmiş, yerel JSON ve
 - **Keşfet (Discover):** Kategori filtreleme, arama çubuğu ve `GridView` tabanlı dinamik ürün kartları.
 - **Asset & JSON Yönetimi:** Ürün verileri yerel `assets/products.json` dosyasından asenkron olarak okunmaktadır.
 - **Ürün Detay Sayfası:** `Navigator` ve route parametreleri ile seçilen ürünün detaylarının aktarımı.
-- **Sepet Yönetimi (Cart):** Adet artırma/azaltma, toplam tutar hesaplama, boş sepet kontrolü ve reaktif sayaç rozeti (badge).
+- **Sepet Yönetimi (Cart):** Adet artırma/azaltma, toplam tutar hesaplama, boş sepet kontrolü ve sayaç rozeti (badge).
 
 ## 🚀 Projeyi Çalıştırma
+
 ```bash
-git clone [https://github.com/mestan4/mini_katalog_app.git](https://github.com/mestan4/mini_katalog_app.git)
+git clone https://github.com/mestan4/mini_katalog_app.git
 cd mini_katalog_app
 flutter pub get
 flutter run
@@ -26,4 +27,4 @@ flutter run
 
 | Ana Sayfa (Discover) | Ürün Detayı | Sepet (Cart) |
 | :---: | :---: | :---: |
-| <img src="screenshots/ana_görünüm.png" width="220" /> | <img src="screenshots/ürün_detay.png" width="220" /> | <img src="screenshots/sepet_görünümü.png" width="220" /> |
+| <img src="screenshots/ana_gorunum.png" width="220" /> | <img src="screenshots/urun_detay.png" width="220" /> | <img src="screenshots/sepet_gorunumu.png" width="220" /> |
