@@ -54,6 +54,12 @@ class _MiniKatalogAppState extends State<MiniKatalogApp> {
     });
   }
 
+  void _clearCart() {
+    setState(() {
+      _cartItems.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -70,6 +76,7 @@ class _MiniKatalogAppState extends State<MiniKatalogApp> {
         onIncrement: _incrementQuantity,
         onDecrement: _decrementQuantity,
         onRemoveFromCart: _removeFromCart,
+        onClearCart: _clearCart,
       ),
     );
   }

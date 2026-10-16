@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
   final Function(CartItem) onIncrement;
   final Function(CartItem) onDecrement;
   final Function(CartItem) onRemoveFromCart;
+  final VoidCallback onClearCart;
 
   const HomeScreen({
     super.key,
@@ -20,6 +21,7 @@ class HomeScreen extends StatefulWidget {
     required this.onIncrement,
     required this.onDecrement,
     required this.onRemoveFromCart,
+    required this.onClearCart,
   });
 
   @override
@@ -84,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
     const primaryColor = Color(0xFF1E293B);
     const accentColor = Color(0xFF4F46E5);
 
-    // Sepetteki toplam ürün sayısı (adetler dahil)
     final int totalCartBadgeCount = widget.cartItems.fold(0, (sum, item) => sum + item.quantity);
 
     return Scaffold(
@@ -132,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onIncrement: widget.onIncrement,
                           onDecrement: widget.onDecrement,
                           onRemoveFromCart: widget.onRemoveFromCart,
+                          onClearCart: widget.onClearCart,
                         ),
                       ),
                     );

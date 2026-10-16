@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../models/cart_item.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatelessWidget {
   final List<CartItem> cartItems;
   final Function(CartItem) onIncrement;
   final Function(CartItem) onDecrement;
   final Function(CartItem) onRemoveFromCart;
+  final VoidCallback onClearCart;
 
   const CartScreen({
     super.key,
@@ -13,6 +15,7 @@ class CartScreen extends StatelessWidget {
     required this.onIncrement,
     required this.onDecrement,
     required this.onRemoveFromCart,
+    required this.onClearCart,
   });
 
   @override
@@ -20,7 +23,6 @@ class CartScreen extends StatelessWidget {
     const primaryColor = Color(0xFF1E293B);
     const accentColor = Color(0xFF4F46E5);
 
-    // Toplam tutar (fiyat * miktar)
     final double totalAmount = cartItems.fold(0, (sum, item) => sum + item.totalPrice);
 
     return Scaffold(
@@ -116,7 +118,6 @@ class CartScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            // Miktar Azalt / Artır Kontrolleri
                             Container(
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF8FAFC),
@@ -187,8 +188,14 @@ class CartScreen extends StatelessWidget {
                               elevation: 0,
                             ),
                             onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Sipariş simülasyonu başarıyla tamamlandı!')),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CheckoutScreen(
+                                    totalAmount: totalAmount,
+                                    onPaymentSuccess: onClearCart,
+                                  ),
+                                ),
                               );
                             },
                             child: const Text('Checkout', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
