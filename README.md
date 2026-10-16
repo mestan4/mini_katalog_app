@@ -15,6 +15,7 @@ Flutter temel eğitim haftası çıktısı olarak geliştirilmiş, yerel JSON ve
 - **Ürün Detay Sayfası:** `Navigator` ve route parametreleri ile seçilen ürünün detaylarının aktarımı.
 - **Sepet Yönetimi (Cart):** Adet artırma/azaltma, toplam tutar hesaplama, boş sepet kontrolü ve sayaç rozeti (badge).
 
+
 ## 🚀 Projeyi Çalıştırma
 
 ```bash
@@ -22,6 +23,7 @@ git clone https://github.com/mestan4/mini_katalog_app.git
 cd mini_katalog_app
 flutter pub get
 flutter run
+```
 
 ## 📸 Uygulama Ekran Görüntüleri
 
